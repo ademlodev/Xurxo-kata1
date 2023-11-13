@@ -1,5 +1,5 @@
 
-class Password implements ValueObject {
+export class Password implements ValueObject {
     constructor(password: string) {
         this.value: password;
     }
