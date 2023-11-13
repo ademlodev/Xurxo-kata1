@@ -1,0 +1,3 @@
+interface ValueObject {
+    value: string
+}
