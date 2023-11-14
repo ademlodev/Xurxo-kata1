@@ -1,5 +1,5 @@
 import { beforeEach, describe } from "node:test";
-import { Password } from "../../src/core/domain/password";
+import { Password } from "../../src/core/domain/value-objects/Password";
 
 describe('Password', ()=>{
 
@@ -8,24 +8,24 @@ describe('Password', ()=>{
   let passOK: any;
 
   beforeEach(() => {
-    passWrong = new Password(EXAMPLE_PASSWORD_WRONG);
-    passOK = new Password(EXAMPLE_PASSWORD_OK);
+    passWrong =  Password.create(EXAMPLE_PASSWORD_WRONG);
+    passOK =  Password.create(EXAMPLE_PASSWORD_OK);
   });
 
   describe('Create Password', () =>{
     it('should create an instance of Password', ()=> {
-      const instante = new Password(EXAMPLE_PASSWORD_OK);
+      const instante = Password.create(EXAMPLE_PASSWORD_OK);
       expect(instante).toBeInstanceOf(Password);
     });
   })
   
   describe('Password Validations', () => {
     it('should be valid passwords', () => {
-      expect(passOK.validate()).toBeTruthy();
+      expect(Password.create(passOK)).toBeTruthy();
     })
     
     it('should no be valid passwords', () => {
-      expect(passWrong.validate()).toBeFalsy();
+      expect(Password.create(passWrong)).toBeFalsy();
     })
   })
   

@@ -1,4 +1,4 @@
-import { IUser, User } from "../../domain/entities/user";
+import { IUser, User } from "../../domain/entities/User";
 
 export default function addUser({ name, password, email }: IUser) {
 	if (!name || !password || !email) {

@@ -1,3 +1,0 @@
-interface ValueObject {
-    value: string
-}
