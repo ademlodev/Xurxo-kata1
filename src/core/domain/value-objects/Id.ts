@@ -5,7 +5,6 @@ export interface IdProps {
 	value: string;
 }
 
-
 export class Id extends ValueObject<IdProps> {
 	private constructor(props: IdProps) {
 		super(props);

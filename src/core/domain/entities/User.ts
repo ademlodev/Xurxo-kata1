@@ -1,14 +1,13 @@
 import { Email } from '../value-objects/Email'
 import { Password } from '../value-objects/Password'
-import { Entity } from "./Entity";
+import { Entity, EntityData } from "./Entity";
 import { Id } from "../value-objects/Id";
 import { validateRequired } from "../utils/validations";
 
-export interface IUser {
+export interface IUser extends EntityData {
     name: string
     password: Password
     email: Email
-    id?: string
 }
 
 export class User extends Entity {
@@ -43,12 +42,12 @@ export class User extends Entity {
         const emailValidation = Email.create(email);
         const passwordValidation = Password.create(password);
         
-        const errors: ValidationError<User>[] = [
+        const errors = [
             this.extractError("id", idValidation, id),
             this.extractError("email", emailValidation, email),
             this.extractError("password", passwordValidation, password),
             { property: "name" as const, errors: validateRequired(name), value: name },
-        ].filter(validation => validation.errors.length > 0);
+        ].filter(validation => !!validation.errors);
         
         if (errors.length === 0) {
               new User({
@@ -64,7 +63,7 @@ export class User extends Entity {
     
     private static extractError(
       property: keyof User,
-      validation: string,
+      validation: Id,
       value: unknown
     ) {
         return {
