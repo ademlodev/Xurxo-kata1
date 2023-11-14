@@ -3,7 +3,6 @@ import { Password } from '../value-objects/Password'
 import { Entity } from "./Entity";
 import { Id } from "../value-objects/Id";
 import { validateRequired } from "../utils/validations";
-import { name } from "ts-jest/dist/transformers/hoist-jest";
 
 export interface IUser {
     name: string
