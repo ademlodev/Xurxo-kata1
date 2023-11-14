@@ -1,10 +1,10 @@
-import test, { beforeEach, describe } from "node:test";
+import { beforeEach, describe } from "node:test";
 import { Password } from "../../src/core/domain/password";
 
 describe('Password', ()=>{
 
   const EXAMPLE_PASSWORD = 'pass';
-  let pass: string;
+  let pass: any;
 
   beforeEach(() => {
     pass = new Password(EXAMPLE_PASSWORD);
