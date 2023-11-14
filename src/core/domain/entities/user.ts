@@ -1,18 +1,26 @@
+import { Email } from '../email'
+import { Password } from '../password'
+
 export interface IUser {
     name: string
-    password: string
-    email: string
+    password: Password
+    email: Email
     id?: string
 }
 
 const userLiteral: IUser = {
     id: '1a',
     name: 'John',
-    password: 'theBestPass98word',
-    email: 'johndoe@fake.es',
+    password: new Password('theBestPass98word'),
+    email: new Email('johndoe@fake.es'),
 }
 
 export class User implements IUser {
+    private _name: string
+    private _password: Password
+    private _email: Email
+    private _id: string | undefined
+
     constructor({ name, password, email, id }: IUser) {
         this._name = name
         this._password = password
