@@ -19,12 +19,12 @@ describe('Password', ()=>{
     });
   })
   
-  describe('Email Validations', () => {
-    it('should be valid email address', () => {
+  describe('Password Validations', () => {
+    it('should be valid passwords', () => {
       expect(passOK.validate()).toBeTruthy();
     })
     
-    it('should be valid email address', () => {
+    it('should no be valid passwords', () => {
       expect(passWrong.validate()).toBeFalsy();
     })
   })
