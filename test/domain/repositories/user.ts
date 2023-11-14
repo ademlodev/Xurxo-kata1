@@ -1,6 +1,6 @@
-import { Email } from '../../../src/core/domain/email'
-import { User } from '../../../src/core/domain/entities/user'
-import { Password } from '../../../src/core/domain/password'
+import { Email } from '../../../src/core/domain/value-objects/Email'
+import { User } from '../../../src/core/domain/entities/User'
+import { Password } from '../../../src/core/domain/value-objects/Password'
 import { UserRepository } from '../../../src/core/domain/repositories/user.repository'
 
 describe('User Repository Tests', () => {
