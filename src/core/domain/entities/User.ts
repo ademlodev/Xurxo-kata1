@@ -49,7 +49,7 @@ export class User extends Entity {
             { property: "name" as const, errors: validateRequired(name), value: name },
         ].filter(validation => !!validation.errors);
         
-        if (errors.length === 0) {
+        if (!errors?.length) {
               new User({
                   id: idValidation.get(),
                   name,
@@ -63,7 +63,7 @@ export class User extends Entity {
     
     private static extractError(
       property: keyof User,
-      validation: Id,
+      validation: string ,
       value: unknown
     ) {
         return {

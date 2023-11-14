@@ -22,9 +22,9 @@ export class Password extends ValueObject<IPassword>{
         const regexpErrors = validateRegexp(password, PASSWORD_REGEX);
         
         if (requiredError.length > 0) {
-            throw new Error(requiredError);
+            throw Error(requiredError);
         } else if (regexpErrors.length > 0) {
-            throw new Error(regexpErrors);
+            throw Error(regexpErrors);
         } else {
             return new Password({ value: password });
         }

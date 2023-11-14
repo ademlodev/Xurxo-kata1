@@ -22,7 +22,7 @@ export class Id extends ValueObject<IdProps> {
 		const requiredError = validateRequired(id);
 		
 		if (requiredError.length > 0) {
-			throw new Error(requiredError);
+			throw Error(requiredError);
 		} else {
 			return new Id({ value: id });
 		}

@@ -24,9 +24,9 @@ export class Email extends ValueObject<IEmail> {
         const regexpErrors = validateRegexp(email, EMAIL_REGEX);
         
         if (requiredError.length > 0) {
-            throw new Error(requiredError);
+            throw Error(requiredError);
         } else if (regexpErrors.length > 0) {
-            throw new Error(regexpErrors);
+            throw Error(regexpErrors);
         } else {
             return new Email({ value: this.format(email) });
         }
