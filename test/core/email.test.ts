@@ -1,5 +1,5 @@
 import { beforeEach, describe } from 'node:test'
-import { Email } from '../../src/core/domain/value-objects/Email'
+import { Email } from '../../src/user/domain/value-objects/Email'
 
 describe('Email Tests', () => {
     const EXAMPLE_EMAIL = 'example@example.com'

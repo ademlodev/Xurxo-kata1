@@ -1,10 +1,10 @@
 import { User } from '../entities/User'
 import { UserRepository } from '../repositories/user.repository'
 
-export class UserAdd {
+export class ListUser {
     constructor(private readonly userRepository: UserRepository) {}
 
-    public async save(user: User) {
-        await this.userRepository.save(user)
+    public list(): Array<User> {
+        return this.userRepository.list()
     }
 }

@@ -1,7 +1,7 @@
-import { Email } from '../../../src/core/domain/value-objects/Email'
-import { User } from '../../../src/core/domain/entities/User'
-import { Password } from '../../../src/core/domain/value-objects/Password'
-import { UserRepository } from '../../../src/core/domain/repositories/user.repository'
+import { Email } from '../../../src/user/domain/value-objects/Email'
+import { User } from '../../../src/user/domain/entities/User'
+import { Password } from '../../../src/user/domain/value-objects/Password'
+import { UserRepository } from '../../../src/user/domain/repositories/user.repository'
 
 describe('User Repository Tests', () => {
     let sut: UserRepository
