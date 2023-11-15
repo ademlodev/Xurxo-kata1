@@ -9,18 +9,13 @@ export class InMemoryRepository implements UserRepository {
     }
 
     save(entity: User): void {
-        const userRepeated = this.findById(entity.id.value);
-        if(userRepeated != null) {
-            //TODO throw new UserRepeatedException();
-        }
-
-        this.users.push(entity);
+        this.users.push(entity)
     }
     list(): Array<User> {
-        return this.users;
+        return this.users
     }
 
     findById(id: string): User | undefined {
-        return this.users.find(user => user.id.value === id)
+        return this.users.find((user) => user.id.value === id)
     }
 }

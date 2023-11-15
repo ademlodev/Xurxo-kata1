@@ -1,32 +1,34 @@
-import { ValueObject } from "./ValueObject";
-import { validateRegexp, validateRequired } from "../utils/validations";
+import { ValueObject } from './ValueObject'
+import { validateRegexp, validateRequired } from '../utils/validations'
+import { Either } from '../../../core/custom-types/Either'
 
 export interface IPassword {
-    value: string;
+    value: string
 }
 
-const PASSWORD_REGEX = new RegExp(/^(?!.*(.)\1{3})((?=.*[^\w\d\s])(?=.*\w)|(?=.*[\d])(?=.*\w)).{8,20}$/);
+const PASSWORD_REGEX = new RegExp(
+    /^(?!.*(.)\1{3})((?=.*[^\w\d\s])(?=.*\w)|(?=.*[\d])(?=.*\w)).{8,20}$/
+)
 
-
-export class Password extends ValueObject<IPassword>{
+export class Password extends ValueObject<IPassword> {
     private constructor(props: IPassword) {
-        super(props);
+        super(props)
     }
-    
+
     get value(): string {
-        return this.props.value;
+        return this.props.value
     }
-    
-    public static create(password: string) {
-        const requiredError = validateRequired(password);
-        const regexpErrors = validateRegexp(password, PASSWORD_REGEX);
-        
+
+    public static create(password: string): Either<Error, Password> {
+        const requiredError = validateRequired(password)
+        const regexpErrors = validateRegexp(password, PASSWORD_REGEX)
+
         if (requiredError.length > 0) {
-            throw Error(requiredError);
+            return Either.left(Error(requiredError))
         } else if (regexpErrors.length > 0) {
-            throw Error(regexpErrors);
+            return Either.left(Error(regexpErrors))
         } else {
-            return new Password({ value: password });
+            return Either.right(new Password({ value: password }))
         }
     }
 }
